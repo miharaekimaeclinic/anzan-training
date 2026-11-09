@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>暗算トレーニング｜自由練習版</title><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>暗算</title><style>
 /* GitHub Pagesでは、利用許諾を確認したABACUS2.ttfをindex.htmlと同じ場所に置いてください。 */
 @font-face{font-family:'AbacusPractice';src:url('./ABACUS2.ttf') format('truetype');font-style:normal;font-weight:400 900;font-display:swap;unicode-range:U+0030-0039}
 /* ABACUS2を数字の0〜9だけに使用。× ÷ − や日本語には適用しない。 */
@@ -6,11 +6,11 @@
 
 :root{font-family:system-ui,-apple-system,'Yu Gothic',Meiryo,sans-serif;color:#152238;background:#f2f5fa}*{box-sizing:border-box}body{margin:0}main{max-width:850px;margin:0 auto;padding:16px 14px 65px}h1{font-size:clamp(22px,5vw,30px);margin:8px 0}p{line-height:1.6}small,.muted{color:#65748b}.panel{background:white;padding:18px;border-radius:16px;margin:16px 0;box-shadow:0 4px 20px #182b4710}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.field{min-width:0}.field label{display:block;font-weight:700;font-size:13px;margin-bottom:5px}select,input[type=number]{width:100%;border:1px solid #cad5e3;border-radius:9px;padding:11px;background:white;font-size:16px;color:#152238}button{font:inherit;border:0;border-radius:10px;padding:12px 16px;background:#245dc1;color:white;font-weight:700;cursor:pointer;touch-action:manipulation}button.secondary{background:#e8eef8;color:#254578}button:disabled{opacity:.4;cursor:default}.full{width:100%;margin-top:12px}.hidden{display:none!important}.info{background:#f0f5ff;border-radius:10px;padding:12px;margin-top:12px;font-size:14px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tab{background:#e8eef8;color:#244576}.tab.active{background:#245dc1;color:white}.top{display:flex;justify-content:space-between;gap:10px;align-items:center}.question{min-height:155px;display:flex;align-items:center;justify-content:center;font-size:clamp(35px,8vw,65px);font-weight:750;letter-spacing:1px;font-variant-numeric:tabular-nums}.mitori{display:flex;flex-direction:column;align-items:flex-end;width:max-content;margin:auto;font-size:clamp(23px,5.7vw,42px);line-height:1.35;font-variant-numeric:tabular-nums}.mitori div{width:100%;text-align:right}.mitori div:last-child{border-bottom:3px solid #152238}.answer{height:70px;border:2px solid #c5d5ed;background:#f8fbff;border-radius:12px;display:flex;align-items:center;justify-content:flex-end;gap:3px;padding:10px;overflow:hidden;font-size:clamp(27px,7vw,42px);font-variant-numeric:tabular-nums}.answer.empty{color:#9aa9bf}.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.keypad button{background:#e9eff9;color:#193457;font-size:24px;padding:15px 6px;min-height:54px}.keypad .action{background:#d5e1f1;font-size:17px}.keypad .confirm{background:#245dc1;color:white;font-size:19px}.result{font-size:23px;font-weight:700;text-align:center}.review{padding:9px 0;border-bottom:1px solid #e1e6ef;font-variant-numeric:tabular-nums}.controls{display:flex;gap:8px;justify-content:space-between;flex-wrap:wrap}.controls button{flex:1}.progress{height:8px;background:#e8eef8;border-radius:8px;overflow:hidden;margin-top:9px}.progress>div{height:100%;width:0;background:#245dc1;transition:width .2s}.mode-note{font-size:12px}.toggleline{display:flex;gap:10px;align-items:center;font-size:14px;margin-top:12px}.toggleline input{height:18px;width:18px}.clock{font-variant-numeric:tabular-nums}.flashCenter{font-size:clamp(55px,13vw,95px)}.good{color:#13734b}.bad{color:#c12d3c}footer{font-size:12px;color:#617088;line-height:1.7;margin-top:25px}@media(max-width:470px){.panel{padding:14px}.grid{gap:10px}.top{font-size:14px}.tabs button{padding:11px 6px}.keypad button{padding:13px 4px}main{padding:10px 10px 50px}}@media(min-width:650px){.tabs{grid-template-columns:repeat(3,1fr)}.keypad{max-width:430px;margin:14px auto}.answer{max-width:430px;margin:auto}}
 .directionSwitch{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;margin:12px 0}.directionSwitch button{padding:10px 12px;background:#e8eef8;color:#254578;font-size:14px}.directionSwitch button.active{background:#245dc1;color:#fff}.historyStats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.historyStat{background:#f0f5ff;border-radius:12px;padding:13px 5px;text-align:center}.historyStat strong{font-size:26px;display:block;font-variant-numeric:tabular-nums}.historyStat small{display:block;font-size:12px}.historyRow{border-bottom:1px solid #e1e6ef;padding:10px 0;font-size:14px}.historyRow span{color:#65748b}.sectionTitle{display:flex;align-items:center;justify-content:space-between;gap:10px}.sectionTitle button{padding:8px 10px;font-size:13px} @media(max-width:390px){.historyStat strong{font-size:21px}.directionSwitch button{font-size:13px;padding:10px 8px}}
- .historyMode{border:1px solid #e2eaf5;border-radius:12px;margin:12px 0;padding:10px}.historyMode h3{font-size:16px;margin:4px 0 8px}.historyNote{font-size:13px;color:#64748b}.backupActions{display:flex;gap:8px;flex-wrap:wrap}.backupActions button{flex:1;min-width:150px}.backupStatus{font-size:13px;color:#245478;margin:7px 0}.historyTable{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:14px;margin-top:12px}.historyTable th,.historyTable td{border-bottom:1px solid #e4e9f0;padding:10px 5px;text-align:right;white-space:nowrap}.historyTable th:first-child,.historyTable td:first-child{text-align:left}.historyTable th{color:#66758d;font-size:12px}.historyScroll{overflow-x:auto}.badInput{border-color:#c12d3c!important}.statusText{min-height:19px;font-size:12px;color:#a03636;text-align:center;margin:6px 0} </style></head><body><main><h1>🧮 暗算トレーニング</h1><p class="muted">好きな問題形式を選び、いつでも始めて終われる暗算練習。</p>
-<section id="settings" class="panel"><h2>練習設定</h2><div class="tabs" id="tabs"><button class="tab active" data-mode="mitori">見取暗算</button><button class="tab" data-mode="multiply">かけ暗算</button><button class="tab" data-mode="divide">わり暗算</button></div><div id="variantSettings" class="field" style="margin-top:16px"><label for="variant">問題の種類</label><select id="variant"></select></div><div class="info" id="variantInfo"></div><button id="start" class="full">練習を開始</button><button id="refreshApp" class="full secondary" type="button">↻ 最新版に更新</button><p class="muted mode-note" style="text-align:center;margin:8px 0 0">更新後もこの端末の練習履歴は残ります。</p></section>
-<section id="game" class="panel hidden"><div class="top"><strong id="counter">第1問</strong><span class="clock" id="timer">00:00</span><button id="quit" class="secondary" style="padding:7px 10px">終了</button></div><p id="qmeta" class="muted mode-note" style="text-align:center"></p><div id="question" class="question" aria-live="polite"></div><div class="directionSwitch" aria-label="解答入力方向"><span class="mode-note muted">入力方向：</span><button type="button" data-direction="high" class="active" aria-pressed="true">上の桁から →</button><button type="button" data-direction="low" aria-pressed="false">← 下の桁から</button></div><div id="prompt" class="muted" style="text-align:center;margin-bottom:8px">答えを入力してください</div><div id="answer" class="answer empty" aria-live="polite">ここに答えを入力</div><div id="statusText" class="statusText" role="status"></div><div class="keypad" id="keypad"><button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button><button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button><button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button><button class="action" data-key="back">⌫ 消す</button><button data-key="0">0</button><button class="confirm" data-key="enter">決定 ↵</button></div><p class="mode-note muted" id="directionNote" style="text-align:center"></p></section>
-<section id="results" class="panel hidden"><h2>練習を終了しました</h2><p id="score" class="result"></p><p id="elapsed" style="text-align:center"></p><p class="muted mode-note" style="text-align:center">送信した解答のみ記録しました。答え合わせの表示はありません。</p><div class="controls" style="margin-top:16px"><button id="retry">同じ形式で再開</button><button id="backSettings" class="secondary">設定に戻る</button></div></section>
-<section id="history" class="panel"><div class="sectionTitle"><h2>日別の練習記録</h2><button id="clearHistory" class="secondary" type="button">履歴を削除</button></div><div class="historyStats"><div class="historyStat"><small>今日</small><strong id="todayCount">0</strong><small>問解答</small></div><div class="historyStat"><small>昨日</small><strong id="yesterdayCount">0</strong><small>問解答</small></div><div class="historyStat"><small>直近7日</small><strong id="weekCount">0</strong><small>問解答</small></div></div><p class="muted mode-note">「決定」で送信した解答のみ集計します。終了時に表示中の問題や、途中で閉じた問題は含みません。正答率と1問あたりの平均解答時間は、正解・不正解の両方を含めて計算します。</p><h3>種類・問題形式別の日別記録</h3><div id="historyList" aria-live="polite"></div><div id="legacyHistory"></div></section><footer>問題は無制限に続き、いつでも「終了」できます。結果は解答を送信するたびに、このブラウザ内に問題形式別で自動保存されます。履歴はこの端末のブラウザ内に保存されます。別の端末とは同期されません。指定された桁数・条件に合わせて問題を自動生成します。</footer></main>
+ .historyMode{border:1px solid #e2eaf5;border-radius:12px;margin:12px 0;padding:10px}.historyMode h3{font-size:16px;margin:4px 0 8px}.historyNote{font-size:13px;color:#64748b}.backupActions{display:flex;gap:8px;flex-wrap:wrap}.backupActions button{flex:1;min-width:150px}.backupStatus{font-size:13px;color:#245478;margin:7px 0}.historyTable{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:14px;margin-top:12px}.historyTable th,.historyTable td{border-bottom:1px solid #e4e9f0;padding:10px 5px;text-align:right;white-space:nowrap}.historyTable th:first-child,.historyTable td:first-child{text-align:left}.historyTable th{color:#66758d;font-size:12px}.historyScroll{overflow-x:auto}.badInput{border-color:#c12d3c!important}.statusText{min-height:19px;font-size:12px;color:#a03636;text-align:center;margin:6px 0} main{max-width:690px;padding-top:8px}.panel{margin:10px 0;padding:14px}.historyMode{margin:8px 0}.historyMode h3{font-size:14px;margin:2px 0 6px}.historyTable{margin-top:3px}.historyTable th,.historyTable td{padding:8px 4px}.directionSwitch{margin:8px 0}.question{min-height:132px}.mode-note{margin:0}.field label{font-size:12px}.full{margin-top:10px}#history .sectionTitle h2{font-size:18px;margin:0}#results .result{margin:8px 0}#results #elapsed{margin:8px 0} </style></head><body><main>
+<section id="settings" class="panel"><div class="tabs" id="tabs"><button class="tab active" data-mode="mitori">見取暗算</button><button class="tab" data-mode="multiply">かけ暗算</button><button class="tab" data-mode="divide">わり暗算</button></div><div id="variantSettings" class="field" style="margin-top:16px"><label for="variant">問題の種類</label><select id="variant"></select></div><button id="start" class="full">練習を開始</button><button id="refreshApp" class="full secondary" type="button">↻ 最新版に更新</button></section>
+<section id="game" class="panel hidden"><div class="top"><strong id="counter">第1問</strong><span class="clock" id="timer">00:00</span><button id="quit" class="secondary" style="padding:7px 10px">終了</button></div><div id="question" class="question" aria-live="polite"></div><div class="directionSwitch" aria-label="解答入力方向"><button type="button" data-direction="high" class="active" aria-pressed="true">上の桁から →</button><button type="button" data-direction="low" aria-pressed="false">← 下の桁から</button></div><div id="answer" class="answer empty" aria-live="polite">ここに答えを入力</div><div id="statusText" class="statusText" role="status"></div><div class="keypad" id="keypad"><button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button><button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button><button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button><button class="action" data-key="back">⌫ 消す</button><button data-key="0">0</button><button class="confirm" data-key="enter">決定 ↵</button></div></section>
+<section id="results" class="panel hidden"><p id="score" class="result"></p><p id="elapsed" style="text-align:center"></p><div class="controls" style="margin-top:16px"><button id="retry">同じ形式で再開</button><button id="backSettings" class="secondary">設定に戻る</button></div></section>
+<section id="history" class="panel"><div class="sectionTitle"><h2>記録</h2><button id="clearHistory" class="secondary" type="button">履歴を削除</button></div><div id="historyList" aria-live="polite"></div></section></main>
 <script>
 (()=>{
 'use strict';
@@ -44,46 +44,24 @@ function makeTable(host,values){
  const body=document.createElement('tbody');values.forEach(([d,v])=>{const row=document.createElement('tr');[d,String(v.count)+'問',pct(v.correct,v.count),v.count?fmtTime(v.elapsedMs/v.count):'—'].forEach(t=>{const td=document.createElement('td');td.textContent=t;row.append(td)});body.append(row)});table.append(body);wrap.append(table);host.append(wrap)
 }
 function renderHistory(){
- const a=readDaily(),today=shiftedDay(0),yday=shiftedDay(-1);const cnt=k=>summary(a[k]).count;
- $('todayCount').textContent=cnt(today);$('yesterdayCount').textContent=cnt(yday);
- $('weekCount').textContent=Array.from({length:7},(_,i)=>cnt(shiftedDay(-i))).reduce((x,y)=>x+y,0);
- const host=$('historyList');host.replaceChildren();const dates=Object.keys(a).filter(k=>/^\d{4}-\d{2}-\d{2}$/.test(k)).sort().reverse();
- let any=false;
- modes.forEach(m=>{
-  const rows=dates.map(d=>[d,a[d]?.[m]]).filter(([d,v])=>v?.count>0);
+ const data=readDaily(), host=$('historyList');host.replaceChildren();
+ const dates=Object.keys(data).filter(k=>/^\d{4}-\d{2}-\d{2}$/.test(k)).sort().reverse();
+ const groups=[
+  ['見取暗算',d=>d?.mitori],
+  ['かけ暗算 ① 2桁×2桁',d=>d?.multiply?.byVariant?.basic],
+  ['かけ暗算 ② 3桁×2桁／2桁×3桁',d=>d?.multiply?.byVariant?.mixed],
+  ['わり暗算 ① 割る数2桁・商2桁',d=>d?.divide?.byVariant?.basic],
+  ['わり暗算 ② 割る数2桁・商3桁／割る数3桁・商2桁',d=>d?.divide?.byVariant?.mixed]
+ ];
+ groups.forEach(([label,pick])=>{
   const section=document.createElement('div');section.className='historyMode';
-  const title=document.createElement('h3');title.textContent=modeNames[m];section.append(title);
-  if(rows.length){
-   any=true;
-   if(m==='mitori'){
-    makeTable(section,rows);
-   }else{
-    const allTitle=document.createElement('p');allTitle.className='historyNote';allTitle.textContent='合計（種類①・②・未分類を含む）';section.append(allTitle);
-    makeTable(section,rows);
-    ['basic','mixed'].forEach(v=>{
-     const h=document.createElement('h4');h.textContent=variantLabels[m][v];h.style.margin='16px 0 4px';section.append(h);
-     const variantRows=rows.map(([d,r])=>[d,r?.byVariant?.[v]]).filter(([d,r])=>r?.count>0);
-     if(variantRows.length)makeTable(section,variantRows);
-     else{const note=document.createElement('p');note.className='historyNote';note.textContent='まだ記録がありません。';section.append(note)}
-    });
-    // 古い版で保存した種類未分類のデータも残し、二重計上はしない。
-    const unclassified=rows.map(([d,r])=>{
-     const b=r?.byVariant?.basic||{},c=r?.byVariant?.mixed||{};
-     return[d,{count:Math.max(0,validCount(r.count)-validCount(b.count)-validCount(c.count)),
-       correct:Math.max(0,validCount(r.correct)-validCount(b.correct)-validCount(c.correct)),
-       elapsedMs:Math.max(0,validCount(r.elapsedMs)-validCount(b.elapsedMs)-validCount(c.elapsedMs))}]
-    }).filter(([d,r])=>r.count>0);
-    if(unclassified.length){
-     const h=document.createElement('h4');h.textContent='種類未分類（以前の履歴）';h.style.margin='16px 0 4px';section.append(h);
-     makeTable(section,unclassified);
-    }
-   }
-  }else{const note=document.createElement('p');note.className='historyNote';note.textContent='まだ記録がありません。';section.append(note)}
-  host.append(section)
+  const title=document.createElement('h3');title.textContent=label;section.append(title);
+  const rows=dates.map(d=>[d,pick(data[d])]).filter(([,v])=>v?.count>0);
+  if(rows.length)makeTable(section,rows);
+  else{const empty=document.createElement('p');empty.className='historyNote';empty.textContent='記録なし';section.append(empty)}
+  host.append(section);
  });
- const old=readStore(legacyKey),oldDates=Object.keys(old).filter(d=>/^\d{4}-\d{2}-\d{2}$/.test(d)&&old[d]?.count>0).sort().reverse();const legacy=$('legacyHistory');legacy.replaceChildren();
- if(oldDates.length){const box=document.createElement('div');box.className='historyMode';const h=document.createElement('h3');h.textContent='旧版の履歴（種類別の内訳なし）';box.append(h);const note=document.createElement('p');note.className='historyNote';note.textContent='以前の記録は種類を判別できないため、上記の種類別集計・今日／昨日／直近7日には含めていません。旧記録そのものは保持されています。';box.append(note);makeTable(box,oldDates.map(d=>[d,old[d]]));legacy.append(box)}
- if(!any){const p=document.createElement('p');p.className='muted';p.textContent='新しい種類別記録はまだありません。解答を「決定」で送信すると、該当する種類に記録されます。';host.prepend(p)}
+ // 旧バージョンの未分類履歴は削除せず、種類別表には表示しない。
 }
 function logAnswer(correct,elapsedMs){
  const a=readDaily(),d=dateKey(new Date()),m=cfg.mode;
@@ -104,7 +82,7 @@ function logAnswer(correct,elapsedMs){
  }
  saveDaily(a);renderHistory();
 }
-function setDirection(v){cfg.direction=v;document.querySelectorAll('[data-direction]').forEach(b=>{const selected=b.dataset.direction===v;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected))});$('directionNote').textContent=v==='high'?'千・百・十・一の位の順に入力':'一・十・百・千の位の順に入力'}
+function setDirection(v){cfg.direction=v;document.querySelectorAll('[data-direction]').forEach(b=>{const selected=b.dataset.direction===v;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected))});}
 document.querySelectorAll('[data-direction]').forEach(b=>b.onclick=()=>setDirection(b.dataset.direction));
 function updateVariantOptions(){
  const sel=$('variant');sel.replaceChildren();
@@ -114,14 +92,7 @@ function updateVariantOptions(){
  updateSettings();
 }
 function show(view){['settings','game','results'].forEach(x=>$(x).classList.toggle('hidden',x!==view))}
-function updateSettings(){
- const mode=cfg.mode,v=$('variant').value;
- let info='';
- if(mode==='mitori') info='すべて3桁・5行。40%の確率で2行を引き算にします。上から計算しても途中の合計は負になりません。';
- if(mode==='multiply') info=v==='mixed'?'3桁×2桁と2桁×3桁をそれぞれ50%の確率で出題します。':'2桁×2桁だけを出題します。';
- if(mode==='divide') info=v==='mixed'?'割る数2桁・商3桁と、割る数3桁・商2桁をそれぞれ50%の確率で出題します。':'割る数2桁・商2桁の問題を出題します。';
- $('variantInfo').textContent=info+' すべて割り切れる問題で、終了するまで何問でも続きます。'.replace('すべて割り切れる問題で、',mode==='divide'?'すべて割り切れる問題で、':'');
-}
+function updateSettings(){}
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{cfg.mode=b.dataset.mode;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));updateVariantOptions()});
 $('variant').onchange=updateSettings;
 // 見取暗算：各問題を独立に40%の確率で加減算にする。
@@ -159,7 +130,7 @@ function makeMath(mode,v){
  const b=digits(divisorDigits),answer=digits(quotientDigits),dividend=b*answer;
  return{mode,a:dividend,b,answer,text:dividend+' ÷ '+b,detail:'割る数'+divisorDigits+'桁・商'+quotientDigits+'桁'};
 }
-function nextQuestion(){if(!active)return;index++;typed='';$('statusText').textContent='';$('answer').classList.add('empty');$('answer').textContent='ここに答えを入力';$('counter').textContent='第'+index+'問';q=cfg.mode==='mitori'?makeMitori():makeMath(cfg.mode,currentVariant);$('qmeta').textContent=q.detail;$('question').replaceChildren();if(q.mode==='mitori'){const w=document.createElement('div');w.className='mitori';q.vals.forEach(v=>{const d=document.createElement('div');d.textContent=v<0?'− '+(-v):String(v);w.append(d)});$('question').append(w)}else{$('question').textContent=q.text}questionStarted=performance.now()}
+function nextQuestion(){if(!active)return;index++;typed='';$('statusText').textContent='';$('answer').classList.add('empty');$('answer').textContent='ここに答えを入力';$('counter').textContent='第'+index+'問';q=cfg.mode==='mitori'?makeMitori():makeMath(cfg.mode,currentVariant);$('question').replaceChildren();if(q.mode==='mitori'){const w=document.createElement('div');w.className='mitori';q.vals.forEach(v=>{const d=document.createElement('div');d.textContent=v<0?'− '+(-v):String(v);w.append(d)});$('question').append(w)}else{$('question').textContent=q.text}questionStarted=performance.now()}
 function updateAnswer(){$('answer').classList.toggle('empty',!typed);$('answer').textContent=typed||'ここに答えを入力';$('statusText').textContent=''}
 function submit(){if(!active||!q)return;if(!typed){$('statusText').textContent='数字を入力してから決定してください';return}const elapsedMs=Math.max(0,Math.round(performance.now()-questionStarted)),correct=Number(typed)===q.answer;session.count++;session.correct+=correct?1:0;session.elapsedMs+=elapsedMs;logAnswer(correct,elapsedMs);nextQuestion()}
 function key(k){if(!active)return;if(k==='enter'){submit();return}if(k==='back'){typed=cfg.direction==='high'?typed.slice(0,-1):typed.slice(1);updateAnswer();return}if(/^\d$/.test(k)&&typed.length<12){typed=cfg.direction==='high'?typed+k:k+typed;updateAnswer()}}
@@ -170,7 +141,7 @@ function finish(){if(!active)return;active=false;clearInterval(ticker);ticker=nu
 function start(){clearInterval(ticker);cfg.mode=cfg.mode==='flash'?'mitori':cfg.mode;currentVariant=$('variant').value;active=true;session={count:0,correct:0,elapsedMs:0};index=0;started=Date.now();show('game');nextQuestion();tick();ticker=setInterval(tick,500)}
 $('refreshApp').onclick=()=>{const url=new URL(window.location.href);url.searchParams.set('_update',String(Date.now()));window.location.replace(url.toString())};
 $('start').onclick=start;$('retry').onclick=start;$('backSettings').onclick=()=>show('settings');$('quit').onclick=finish;
-$('clearHistory').onclick=()=>{if(confirm('この端末の種類別履歴と旧版履歴をすべて削除しますか？')){try{localStorage.removeItem(historyKey);localStorage.removeItem(legacyKey)}catch{}renderHistory()}};
+$('clearHistory').onclick=()=>{if(confirm('この端末の履歴をすべて削除しますか？')){try{localStorage.removeItem(historyKey);localStorage.removeItem(legacyKey)}catch{}renderHistory()}};
 setDirection('high');updateVariantOptions();renderHistory();
 })();
 </script></body></html>
