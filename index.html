@@ -8,7 +8,7 @@
 .directionSwitch{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;margin:12px 0}.directionSwitch button{padding:10px 12px;background:#e8eef8;color:#254578;font-size:14px}.directionSwitch button.active{background:#245dc1;color:#fff}.historyStats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.historyStat{background:#f0f5ff;border-radius:12px;padding:13px 5px;text-align:center}.historyStat strong{font-size:26px;display:block;font-variant-numeric:tabular-nums}.historyStat small{display:block;font-size:12px}.historyRow{border-bottom:1px solid #e1e6ef;padding:10px 0;font-size:14px}.historyRow span{color:#65748b}.sectionTitle{display:flex;align-items:center;justify-content:space-between;gap:10px}.sectionTitle button{padding:8px 10px;font-size:13px} @media(max-width:390px){.historyStat strong{font-size:21px}.directionSwitch button{font-size:13px;padding:10px 8px}}
  .historyMode{border:1px solid #e2eaf5;border-radius:12px;margin:12px 0;padding:10px}.historyMode h3{font-size:16px;margin:4px 0 8px}.historyNote{font-size:13px;color:#64748b}.backupActions{display:flex;gap:8px;flex-wrap:wrap}.backupActions button{flex:1;min-width:150px}.backupStatus{font-size:13px;color:#245478;margin:7px 0}.historyTable{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:14px;margin-top:12px}.historyTable th,.historyTable td{border-bottom:1px solid #e4e9f0;padding:10px 5px;text-align:right;white-space:nowrap}.historyTable th:first-child,.historyTable td:first-child{text-align:left}.historyTable th{color:#66758d;font-size:12px}.historyScroll{overflow-x:auto}.badInput{border-color:#c12d3c!important}.statusText{min-height:19px;font-size:12px;color:#a03636;text-align:center;margin:6px 0} main{max-width:690px;padding-top:8px}.panel{margin:10px 0;padding:14px}.historyMode{margin:8px 0}.historyMode h3{font-size:14px;margin:2px 0 6px}.historyTable{margin-top:3px}.historyTable th,.historyTable td{padding:8px 4px}.directionSwitch{margin:8px 0}.question{min-height:132px}.mode-note{margin:0}.field label{font-size:12px}.full{margin-top:10px}#history .sectionTitle h2{font-size:18px;margin:0}#results .result{margin:8px 0}#results #elapsed{margin:8px 0} </style></head><body><main>
 <section id="settings" class="panel"><div class="tabs" id="tabs"><button class="tab active" data-mode="mitori">見取暗算</button><button class="tab" data-mode="multiply">かけ暗算</button><button class="tab" data-mode="divide">わり暗算</button></div><div id="variantSettings" class="field" style="margin-top:16px"><label for="variant">問題の種類</label><select id="variant"></select></div><div class="directionSwitch" aria-label="開始時の解答入力方向"><button type="button" data-direction="high" class="active" aria-pressed="true">上の桁から →</button><button type="button" data-direction="low" aria-pressed="false">← 下の桁から</button></div><button id="start" class="full">練習を開始</button><button id="refreshApp" class="full secondary" type="button">↻ 最新版に更新</button></section>
-<section id="game" class="panel hidden"><div class="top"><strong id="counter">第1問</strong><span class="clock" id="timer">00:00</span><button id="quit" class="secondary" style="padding:7px 10px">終了</button></div><div id="question" class="question" aria-live="polite"></div><div class="directionSwitch" aria-label="解答入力方向"><button type="button" data-direction="high" class="active" aria-pressed="true">上の桁から →</button><button type="button" data-direction="low" aria-pressed="false">← 下の桁から</button></div><div id="answer" class="answer empty" aria-live="polite">ここに答えを入力</div><div id="statusText" class="statusText" role="status"></div><div class="keypad" id="keypad"><button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button><button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button><button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button><button class="action" data-key="back">⌫ 消す</button><button data-key="0">0</button><button class="confirm" data-key="enter">決定 ↵</button></div></section>
+<section id="game" class="panel hidden"><div class="top"><strong id="counter">第1問</strong><span class="clock" id="timer">00:00</span><button id="quit" class="secondary" style="padding:7px 10px">終了</button></div><div id="question" class="question" aria-live="polite"></div><div class="directionSwitch" aria-label="解答入力方向"><button type="button" data-direction="high" class="active" aria-pressed="true">上の桁から →</button><button type="button" data-direction="low" aria-pressed="false">← 下の桁から</button></div><div id="answer" class="answer empty" aria-live="polite"></div><div id="statusText" class="statusText" role="status"></div><div class="keypad" id="keypad"><button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button><button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button><button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button><button class="action" data-key="back">⌫ 消す</button><button data-key="0">0</button><button class="confirm" data-key="enter">決定 ↵</button></div></section>
 <section id="results" class="panel hidden"><p id="score" class="result"></p><p id="elapsed" style="text-align:center"></p><div class="controls" style="margin-top:16px"><button id="retry">同じ形式で再開</button><button id="backSettings" class="secondary">設定に戻る</button></div></section>
 <section id="history" class="panel"><div class="sectionTitle"><h2>記録</h2><button id="clearHistory" class="secondary" type="button">履歴を削除</button></div><div id="historyList" aria-live="polite"></div></section></main>
 <script>
@@ -44,7 +44,7 @@ function makeTable(host,values){
  const head=document.createElement('thead'),tr=document.createElement('tr');['日付','解答数','正答率','平均解答時間'].forEach(t=>{const th=document.createElement('th');th.textContent=t;tr.append(th)});head.append(tr);table.append(head);
  const body=document.createElement('tbody');values.forEach(([d,v])=>{const row=document.createElement('tr');[d,String(v.count)+'問',pct(v.correct,v.count),v.count?fmtTime(v.elapsedMs/v.count):'—'].forEach(t=>{const td=document.createElement('td');td.textContent=t;row.append(td)});body.append(row)});table.append(body);wrap.append(table);host.append(wrap)
 }
-function renderHistory(){
+function renderHistory(selectedOnly=false){
  const data=readDaily(), host=$('historyList');host.replaceChildren();
  const dates=Object.keys(data).filter(k=>/^\d{4}-\d{2}-\d{2}$/.test(k)).sort().reverse();
  const groups=[
@@ -54,7 +54,8 @@ function renderHistory(){
   ['わり暗算 ① 割る数2桁・商2桁',d=>d?.divide?.byVariant?.basic],
   ['わり暗算 ② 割る数2桁・商3桁／割る数3桁・商2桁',d=>d?.divide?.byVariant?.mixed]
  ];
- groups.forEach(([label,pick])=>{
+ const visibleGroups=selectedOnly ? groups.filter((_,i)=>cfg.mode==='mitori'?i===0:cfg.mode==='multiply'?i===(currentVariant==='mixed'?2:1):i===(currentVariant==='mixed'?4:3)) : groups;
+ visibleGroups.forEach(([label,pick])=>{
   const section=document.createElement('div');section.className='historyMode';
   const title=document.createElement('h3');title.textContent=label;section.append(title);
   const rows=dates.map(d=>[d,pick(data[d])]).filter(([,v])=>v?.count>0);
@@ -81,7 +82,7 @@ function logAnswer(correct,elapsedMs){
   item.correct=validCount(item.correct)+(correct?1:0);
   item.elapsedMs=validCount(item.elapsedMs)+elapsedMs;
  }
- saveDaily(a);renderHistory();
+ saveDaily(a);
 }
 // 各種目の入力方向を独立に保存する。履歴とは別のキーを使用。
 const savedDirections=readStore(directionKey);
@@ -102,7 +103,7 @@ function updateVariantOptions(){
  if(cfg.mode==='mitori')sel.value='standard';
  updateSettings();
 }
-function show(view){['settings','game','results'].forEach(x=>$(x).classList.toggle('hidden',x!==view))}
+function show(view){['settings','game','results'].forEach(x=>$(x).classList.toggle('hidden',x!==view));$('history').classList.toggle('hidden',view==='game');if(view!=='game')renderHistory(view==='results')}
 function updateSettings(){}
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{cfg.mode=b.dataset.mode;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));updateVariantOptions();restoreDirectionForMode()});
 $('variant').onchange=updateSettings;
@@ -141,18 +142,18 @@ function makeMath(mode,v){
  const b=digits(divisorDigits),answer=digits(quotientDigits),dividend=b*answer;
  return{mode,a:dividend,b,answer,text:dividend+' ÷ '+b,detail:'割る数'+divisorDigits+'桁・商'+quotientDigits+'桁'};
 }
-function nextQuestion(){if(!active)return;index++;typed='';$('statusText').textContent='';$('answer').classList.add('empty');$('answer').textContent='ここに答えを入力';$('counter').textContent='第'+index+'問';q=cfg.mode==='mitori'?makeMitori():makeMath(cfg.mode,currentVariant);$('question').replaceChildren();if(q.mode==='mitori'){const w=document.createElement('div');w.className='mitori';q.vals.forEach(v=>{const d=document.createElement('div');d.textContent=v<0?'− '+(-v):String(v);w.append(d)});$('question').append(w)}else{$('question').textContent=q.text}questionStarted=performance.now()}
-function updateAnswer(){$('answer').classList.toggle('empty',!typed);$('answer').textContent=typed||'ここに答えを入力';$('statusText').textContent=''}
+function nextQuestion(){if(!active)return;index++;typed='';$('statusText').textContent='';$('answer').classList.add('empty');$('answer').textContent='';$('counter').textContent='第'+index+'問';q=cfg.mode==='mitori'?makeMitori():makeMath(cfg.mode,currentVariant);$('question').replaceChildren();if(q.mode==='mitori'){const w=document.createElement('div');w.className='mitori';q.vals.forEach(v=>{const d=document.createElement('div');d.textContent=v<0?'− '+(-v):String(v);w.append(d)});$('question').append(w)}else{$('question').textContent=q.text}questionStarted=performance.now()}
+function updateAnswer(){$('answer').classList.toggle('empty',!typed);$('answer').textContent=typed;$('statusText').textContent=''}
 function submit(){if(!active||!q)return;if(!typed){$('statusText').textContent='数字を入力してから決定してください';return}const elapsedMs=Math.max(0,Math.round(performance.now()-questionStarted)),correct=Number(typed)===q.answer;session.count++;session.correct+=correct?1:0;session.elapsedMs+=elapsedMs;logAnswer(correct,elapsedMs);nextQuestion()}
 function key(k){if(!active)return;if(k==='enter'){submit();return}if(k==='back'){typed=cfg.direction==='high'?typed.slice(0,-1):typed.slice(1);updateAnswer();return}if(/^\d$/.test(k)&&typed.length<12){typed=cfg.direction==='high'?typed+k:k+typed;updateAnswer()}}
 $('keypad').onclick=e=>{const b=e.target.closest('button[data-key]');if(b)key(b.dataset.key)};
 document.addEventListener('keydown',e=>{if(!active)return;let k=null;if(/^\d$/.test(e.key))k=e.key;else if(e.key==='Enter')k='enter';else if(e.key==='Backspace')k='back';if(k){e.preventDefault();key(k)}});
 function tick(){const sec=Math.floor((Date.now()-started)/1000);$('timer').textContent=String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0')}
-function finish(){if(!active)return;active=false;clearInterval(ticker);ticker=null;show('results');$('score').textContent=session.count+'問解答・正答率 '+pct(session.correct,session.count);$('elapsed').textContent='平均解答時間：'+(session.count?fmtTime(session.elapsedMs/session.count):'—')+' ／ 解答送信済みの問題だけ集計';renderHistory()}
+function finish(){if(!active)return;active=false;clearInterval(ticker);ticker=null;show('results');$('score').textContent=session.count+'問解答・正答率 '+pct(session.correct,session.count);$('elapsed').textContent='平均解答時間：'+(session.count?fmtTime(session.elapsedMs/session.count):'—');}
 function start(){clearInterval(ticker);cfg.mode=cfg.mode==='flash'?'mitori':cfg.mode;currentVariant=$('variant').value;active=true;session={count:0,correct:0,elapsedMs:0};index=0;started=Date.now();show('game');nextQuestion();tick();ticker=setInterval(tick,500)}
 $('refreshApp').onclick=()=>{const url=new URL(window.location.href);url.searchParams.set('_update',String(Date.now()));window.location.replace(url.toString())};
 $('start').onclick=start;$('retry').onclick=start;$('backSettings').onclick=()=>show('settings');$('quit').onclick=finish;
-$('clearHistory').onclick=()=>{if(confirm('この端末の履歴をすべて削除しますか？')){try{localStorage.removeItem(historyKey);localStorage.removeItem(legacyKey)}catch{}renderHistory()}};
+$('clearHistory').onclick=()=>{if(confirm('この端末の履歴をすべて削除しますか？')){try{localStorage.removeItem(historyKey);localStorage.removeItem(legacyKey)}catch{}renderHistory($('results').classList.contains('hidden')===false)}};
 restoreDirectionForMode();updateVariantOptions();renderHistory();
 })();
 </script></body></html>
